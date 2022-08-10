@@ -15,4 +15,12 @@ describe("User Model", () => {
     expect(store.create).toBeDefined();
   });
 
+  it('create method should add a user', async () => {
+    const random_number = Math.random();
+    const result = await store.create({
+      user_name: 'user'+random_number,
+      password: '123456'  
+    });
+    expect(result.user_name).toEqual('user'+random_number);
+  });
 });

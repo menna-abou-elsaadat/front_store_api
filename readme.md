@@ -38,25 +38,25 @@ GRANT ALL PRIVILEGES ON DATABASE store_front_test TO username123;
 
 ### 2. database schema
 #### Product
--  id
-- name
-- price
+-  id  (serial)
+- name (varchar)
+- price (integer)
 
 #### User
-- id
-- username
-- password
+- id  (serial)
+- username (varchar)
+- password  (varchar)
 
 #### Orders
-- id
-- user_id
+- id (serial)
+- user_id (integer)
 - completed (boolean)
 
 #### Order_products
-- id
-- order_id
-- product_id
-- product_quantity
+- id (serial)
+- order_id (integer)
+- product_id (integer)
+- product_quantity (integer)
 
 #### Command lines
 - use 'npm run start'   to start project on post 3000
@@ -93,4 +93,8 @@ GRANT ALL PRIVILEGES ON DATABASE store_front_test TO username123;
 -/orders/current (method:post)(request header bearer_token : token)(request body:{'user_id' :1})(to retrieve all uncompleted orders form user whose id = 1 )
 
 -/orders/completed (method:post)(request header bearer_token : token)(request body:{'user_id' :1})(to retrieve all completed orders form user whose id = 1 )
+
+### Local host ports
+-for the database, port is  5432
+-server is running on port 3000
 

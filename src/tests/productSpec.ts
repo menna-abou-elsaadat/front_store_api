@@ -14,5 +14,12 @@ describe("Product Model", () => {
   it('should have a create method', () => {
     expect(store.create).toBeDefined();
   });
-
+  it('create method should add a product', async () => {
+    const result = await store.create({
+      name: 'product',
+      price: 12  
+    });
+    expect(result.name).toEqual('product');
+    expect(result.price).toEqual(12);
+  });
 });
