@@ -15,4 +15,24 @@ describe("Product Model", () => {
     expect(store.currentForUser).toBeDefined();
   });
 
+  it('create method ', async () => {
+    const result = await store.create({'user_id':1});
+    expect(result.user_id).toEqual(1);
+  });
+
+  it('makeItCompleted method ', async () => {
+    const result = await store.makeItCompleted({'id':1});
+    expect(result.completed).toEqual(true);
+  });
+
+  it('currentForUser method ', async () => {
+    const result = await store.currentForUser({'user_id':1});
+    expect(result).toEqual(jasmine.any(Array));
+  });
+
+  it('completedForUser method ', async () => {
+    const result = await store.completedForUser({'user_id':1});
+    expect(result).toEqual(jasmine.any(Array));
+  });
+
 });

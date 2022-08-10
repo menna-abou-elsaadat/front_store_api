@@ -23,4 +23,15 @@ describe("User Model", () => {
     });
     expect(result.user_name).toEqual('user'+random_number);
   });
+
+  it('index method ', async () => {
+    const result = await store.index();
+    expect(result.length).toBeGreaterThan(0);
+  });
+
+  it('show method ', async () => {
+    const result = await store.show(1);
+    expect(result).toEqual(jasmine.any(Object));
+  });
+
 });

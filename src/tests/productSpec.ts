@@ -22,4 +22,13 @@ describe("Product Model", () => {
     expect(result.name).toEqual('product');
     expect(result.price).toEqual(12);
   });
+  it('index method ', async () => {
+    const result = await store.index();
+    expect(result.length).toBeGreaterThan(0);
+  });
+
+  it('show method ', async () => {
+    const result = await store.show(1);
+    expect(result).toEqual(jasmine.any(Object));
+  });
 });
