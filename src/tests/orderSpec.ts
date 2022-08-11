@@ -1,8 +1,10 @@
 import { Order, orderStore } from '../models/order';
+import { User, userStore } from '../models/user';
 
+const user_store = new userStore()
 const store = new orderStore()
 
-describe("Product Model", () => {
+describe("Order Model", () => {
   it('should have an index method', () => {
     expect(store.create).toBeDefined();
   });
@@ -16,12 +18,23 @@ describe("Product Model", () => {
   });
 
   it('create method ', async () => {
-    const result = await store.create({'user_id':1});
-    expect(result.user_id).toEqual(1);
+    const random_number = Math.random();
+    const create_user = await user_store.create({
+      user_name: 'user'+random_number,
+      password: '123456'  
+    });
+    const result = await store.create({'user_id':create_user.id});
+    expect(result.user_id).toEqual(create_user.id);
   });
 
   it('makeItCompleted method ', async () => {
-    const result = await store.makeItCompleted({'id':1});
+    const random_number = Math.random();
+    const create_user = await user_store.create({
+      user_name: 'user'+random_number,
+      password: '123456'  
+    });
+    const create_order = await store.create({'user_id':create_user.id});
+    const result = await store.makeItCompleted({'id':create_order.id});
     expect(result.completed).toEqual(true);
   });
 
